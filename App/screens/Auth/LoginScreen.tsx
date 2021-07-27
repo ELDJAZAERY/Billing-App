@@ -1,15 +1,12 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-
-export default function TabOneScreen() {
+export const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <View style={styles.separator} />
+      <Text>  Login Screen </Text>
     </View>
   );
 }
@@ -30,3 +27,5 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
+
+export default LoginScreen
