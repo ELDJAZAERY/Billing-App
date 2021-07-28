@@ -47,7 +47,7 @@ const ProductsStackScreen = () => (
 
 const SettingsStackScreen = () => (
   <SettingsStack.Navigator>
-    <SettingsStack.Screen name="Search" component={SettingsScreen} />
+    <SettingsStack.Screen name="Settings" component={SettingsScreen} />
   </SettingsStack.Navigator>
 );
 

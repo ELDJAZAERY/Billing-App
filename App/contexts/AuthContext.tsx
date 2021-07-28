@@ -1,3 +1,9 @@
 import React from "react";
 
-export const AuthContext = React.createContext(null);
+const initContextValue: AuthContextType = {
+  login: () => {},
+  logout: () => {},
+};
+
+export const AuthContext =
+  React.createContext<AuthContextType>(initContextValue);

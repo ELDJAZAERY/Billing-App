@@ -7,14 +7,18 @@ import { LoadingScreen } from "./screens";
 
 export default () => {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
-  // const [userToken, setUserToken] = useState<String | null>(null);
-  const [userToken, setUserToken] = useState<String | null>("token");
+  const [userToken, setUserToken] = useState<String | null>(null);
+  // const [userToken, setUserToken] = useState<String | null>("token");
 
   const authContext = useMemo<any>(() => {
     return {
-      signIn: () => {
+      login: () => {
         setIsLoading(false);
         setUserToken("usetToken fetched from the Auth API");
+      },
+      logout: () => {
+        setIsLoading(false);
+        setUserToken(null);
       },
     };
   }, []);

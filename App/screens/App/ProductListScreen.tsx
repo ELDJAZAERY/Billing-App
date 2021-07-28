@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const ProductsListScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Tab Tow</Text>
       <View style={styles.separator} />
       <Text>  Products List Screen </Text>
     </View>
