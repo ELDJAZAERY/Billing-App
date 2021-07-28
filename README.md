@@ -38,8 +38,8 @@ Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 - Mobx
 
 
-
 ### amerlioration 
 - persistant token and loggin state
-- avoid uplicated billing items - do the some of quantity and theris prices
+- avoid duplicated product items - merge the tow product into one 
+- persistant product list ( since ther's no backend side storage )
 - Delete product by long press

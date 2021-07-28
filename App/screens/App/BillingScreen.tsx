@@ -51,7 +51,6 @@ const BillingScreen = (props: any) => {
 
   /** Handle submit form  */
   const SubmitForm = () => {
-
     // add this product to the global list
     ProductListStore.addProduct(formData);
 
@@ -67,10 +66,11 @@ const BillingScreen = (props: any) => {
     (FormRef as any).current?.submit();
   };
 
+  const { totlaPriceWithoutTax, tax, discount, totalPrice } = ProductListStore;
+
   return (
     <ScrollView>
-      <View style={[styles.container, { marginTop: 150 }]}>
-        <View style={[styles.action, { alignItems: "center" }]}></View>
+      <View style={[styles.container, { marginTop: 100 }]}>
         <View style={styles.action}>
           <Form ref={FormRef} onSubmit={SubmitForm} instantValidate={true}>
             <InputText
@@ -113,7 +113,9 @@ const BillingScreen = (props: any) => {
               onChangeText={(quantity: string) => {
                 handleChange("quantity", Number.parseInt(quantity) || "");
               }}
-              leftIcon={<FontAwesome name="thumb-tack" color="#0A3055" size={20} />}
+              leftIcon={
+                <FontAwesome name="thumb-tack" color="#0A3055" size={20} />
+              }
               invalidIcon={
                 <Feather name="alert-circle" color="red" size={20} />
               }
@@ -162,6 +164,21 @@ const BillingScreen = (props: any) => {
             >
               <Text style={styles.appButtonText}>Add Product</Text>
             </TouchableOpacity>
+
+            <View style={[styles.container, { marginTop: 40 }]}>
+              <View>
+                <Text style={[styles.labelStyle]}>
+                  Totla price without tax : {totlaPriceWithoutTax} $
+                </Text>
+                <Text style={[styles.labelStyle]}>Tax 6.0% : {tax} $ </Text>
+                <Text style={[styles.labelStyle]}>
+                  Discount 3.0% : {discount} ${" "}
+                </Text>
+                <Text style={[styles.labelStyle]}>
+                  Totla price : {totalPrice} ${" "}
+                </Text>
+              </View>
+            </View>
           </Form>
         </View>
       </View>
@@ -177,6 +194,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  billingText: {
+    fontSize: 40,
+    fontWeight: "bold",
+    alignSelf: "center",
   },
   action: {
     width: Dimensions.get("window").width,
@@ -198,10 +220,11 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   labelStyle: {
-    fontSize: hp("1.8%"),
+    fontSize: hp("2%"),
     color: colors.white,
     paddingTop: hp("0.8%"),
-    opacity: 0.9,
+    opacity: 0.7,
+    fontWeight: "bold",
     // top: 20
   },
   inputStyle: {
