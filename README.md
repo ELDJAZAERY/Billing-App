@@ -33,4 +33,6 @@ Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 
 ### stuffs used 
 - React Navigation v5
-- 
+- validate-form-in-expo-style
+- @react-native-async-storage/async-storage
+

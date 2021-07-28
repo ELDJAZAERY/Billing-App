@@ -38,14 +38,6 @@ const LoginScreen = () => {
   const EmailTextInputRef = useRef();
   const PWDTextInputRef = useRef();
 
-  useEffect(() => {
-    /** ComponentWillUnmount */
-    return () => {
-      // Remove own rules
-      Form.removeValidationRule("isValidPassword");
-    };
-  }, []);
-
   /** Handle form field update  */
   const handleChange = (key: "email" | "password", value: string) => {
     setFormData((data: LoginFormData) => ({
@@ -63,7 +55,7 @@ const LoginScreen = () => {
 
   /** Handle submit form  */
   const SubmitForm = () => {
-    auth.login();
+    auth.login("usetToken fetched from the Auth API");
     // alert(" submit ");
   };
 
@@ -75,9 +67,8 @@ const LoginScreen = () => {
       formData.email !== "test@gmail.com" ||
       formData.password !== "test123"
     ) {
+      // set errors indicators
       (EmailTextInputRef?.current as any)?.makeInvalid();
-      //   (PWDTextInputRef?.current as any)?.makeInvalid();
-
       setFormErrorMessage("Invalid email or password");
     } else {
       (FormRef as any).current?.submit();

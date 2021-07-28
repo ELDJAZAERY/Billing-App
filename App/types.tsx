@@ -4,6 +4,6 @@ declare type LoginFormData = {
 };
 
 declare type AuthContextType = {
-  login: Function;
+  login: (token: string) => void;
   logout: Function;
 };

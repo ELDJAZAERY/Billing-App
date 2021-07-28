@@ -4,6 +4,7 @@ import { AuthContext } from "./contexts/AuthContext";
 import { RootStackScreen } from "./navigation";
 
 import { LoadingScreen } from "./screens";
+import { getData, storeData } from "./data";
 
 export default () => {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
@@ -12,9 +13,10 @@ export default () => {
 
   const authContext = useMemo<any>(() => {
     return {
-      login: () => {
+      login: (token: string) => {
         setIsLoading(false);
-        setUserToken("usetToken fetched from the Auth API");
+        storeData("userToken", token);
+        setUserToken(token);
       },
       logout: () => {
         setIsLoading(false);
@@ -24,9 +26,15 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    // get stored token
+    getData("userToken")
+      .then((token) => {
+        if (token !== "") setUserToken(token);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) {

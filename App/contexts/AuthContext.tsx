@@ -1,7 +1,7 @@
 import React from "react";
 
 const initContextValue: AuthContextType = {
-  login: () => {},
+  login: (token: string) => {},
   logout: () => {},
 };
 
