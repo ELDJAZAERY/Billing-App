@@ -73,7 +73,7 @@ class ProductList {
 
   deleteProduct = (product: Product) => {
     this.productList = this.productList.filter(
-      (p) => p.productLabel === product.productLabel
+      (p) => p.productLabel !== product.productLabel
     );
 
     // persisting product list
@@ -84,6 +84,13 @@ class ProductList {
   };
 
   updateBill = () => {
+    this.totlaPriceWithoutTax = 0;
+    this.discount = 0;
+    this.tax = 0;
+    this.totalPrice = 0;
+
+    if (this.productList.length === 0) return;
+
     let totlaPriceWithoutTax = 0;
 
     this.productList.forEach((p) => {
