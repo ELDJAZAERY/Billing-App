@@ -1,29 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { AuthContext } from "./contexts/AuthContext";
+import { authContext, AuthContext } from "./contexts/AuthContext";
 import { RootStackScreen } from "./navigation";
 
 import { LoadingScreen } from "./screens";
-import { getData, storeData } from "./data";
+import { getData } from "./data";
 
 export default () => {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
   const [userToken, setUserToken] = useState<String | null>(null);
-  // const [userToken, setUserToken] = useState<String | null>("token");
 
-  const authContext = useMemo<any>(() => {
-    return {
-      login: (token: string) => {
-        setIsLoading(false);
-        storeData("userToken", token);
-        setUserToken(token);
-      },
-      logout: () => {
-        setIsLoading(false);
-        setUserToken(null);
-      },
-    };
-  }, []);
+  // initialize the Auth Context Provider
+  const authContextProvider = authContext(setIsLoading, setUserToken);
 
   useEffect(() => {
     // get stored token
@@ -42,10 +30,10 @@ export default () => {
   }
 
   return (
-    <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        <RootStackScreen userToken={userToken} />
-      </NavigationContainer>
+    <AuthContext.Provider value={authContextProvider}>
+        <NavigationContainer>
+          <RootStackScreen userToken={userToken} />
+        </NavigationContainer>
     </AuthContext.Provider>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import {
   StyleSheet,
   View,
@@ -56,10 +56,12 @@ const LoginScreen = () => {
   /** Handle submit form  */
   const SubmitForm = () => {
     auth.login("usetToken fetched from the Auth API");
-    // alert(" submit ");
   };
 
   const handleSubmit = async () => {
+    // if not a valid Form do not fetch the Auth server
+    if (!(await (FormRef as any).current?.isFormValid())) return;
+
     // await fetch server and check the validite of theses credintials
 
     // if they are not valid
@@ -70,6 +72,8 @@ const LoginScreen = () => {
       // set errors indicators
       (EmailTextInputRef?.current as any)?.makeInvalid();
       setFormErrorMessage("Invalid email or password");
+
+      // else if all is ok we loggedin
     } else {
       (FormRef as any).current?.submit();
     }
@@ -197,7 +201,7 @@ const styles = StyleSheet.create({
   },
   inputContainerStyle: {
     paddingBottom: hp("1%"),
-    paddingTop: hp("1.3%"),
+    paddingTop: hp("2.5%"),
     borderWidth: 2,
     borderBottomWidth: 2,
     // borderColor: "#333333",

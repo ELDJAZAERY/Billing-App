@@ -35,4 +35,11 @@ Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 - React Navigation v5
 - validate-form-in-expo-style
 - @react-native-async-storage/async-storage
+- Mobx
 
+
+
+### amerlioration 
+- persistant token and loggin state
+- avoid uplicated billing items - do the some of quantity and theris prices
+- Delete product by long press
