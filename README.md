@@ -42,4 +42,4 @@ Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 - persistant token and loggin state
 - avoid duplicated product items - merge the tow product into one 
 - persistant product list ( since ther's no backend side storage )
-- Delete product by long press
+- Remove product

@@ -28,9 +28,7 @@ const initialformData: BillingDataForm = {
   price: 0,
 };
 
-const BillingScreen = (props: any) => {
-  // Product list context
-  const productList: Product[] = ProductListStore.productList;
+const BillingScreen = () => {
 
   /** Form Data state */
   const [formData, setFormData] = useState<BillingDataForm>(initialformData);

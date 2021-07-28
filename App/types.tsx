@@ -16,3 +16,8 @@ declare type Product = {
 
 /** same as Product  */
 declare type BillingDataForm = Product;
+
+declare type ProductListCardPropsType = {
+  product: Product;
+  navigate?: Function;
+};
