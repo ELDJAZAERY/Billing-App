@@ -18,6 +18,7 @@ const ProductDetailsScreen = (props: any) => {
         <View  style={[styles.container]}>
           <Text> Quantity : {quantity} </Text>
           <Text> Price : {price} </Text>
+          <Text> Total Price : {quantity * price} </Text>
         </View>
         <Card.Divider />
         <TouchableOpacity
